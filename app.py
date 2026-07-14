@@ -280,10 +280,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-_, _hero_link_col, _ = st.columns([1, 1, 1])
-with _hero_link_col:
-    st.page_link("pages/01_📋_Plantillas_RI.py", label="📋 Plantillas de informes RI", icon="📋")
-
 st.info(
     "Esta herramienta es un apoyo a la decisión clínica. No reemplaza el juicio clínico "
     "individualizado, los protocolos institucionales vigentes ni la interconsulta con "
