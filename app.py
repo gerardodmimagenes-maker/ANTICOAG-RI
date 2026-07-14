@@ -167,7 +167,9 @@ with st.sidebar:
 
     st.markdown("<hr>", unsafe_allow_html=True)
     st.markdown("<h3 style='font-size:16px;'>🧪 Función Renal (para NACOs)</h3>", unsafe_allow_html=True)
-    crcl_directo = st.number_input("Aclaramiento de Creatinina (CrCl) mL/min:", min_value=0.0, max_value=200.0, value=90.0, step=1.0, key="crcl_directo")
+    if "crcl_directo" not in st.session_state:
+        st.session_state["crcl_directo"] = 90.0
+    crcl_directo = st.number_input("Aclaramiento de Creatinina (CrCl) mL/min:", min_value=0.0, max_value=200.0, step=1.0, key="crcl_directo")
     with st.expander("Calcular CrCl (Cockcroft-Gault)"):
         c1, c2 = st.columns(2)
         with c1:
@@ -176,11 +178,18 @@ with st.sidebar:
         with c2:
             creat_cg = st.number_input("Creatinina sérica (mg/dL):", min_value=0.1, max_value=20.0, value=1.0, step=0.1, key="creat_cg")
             sexo_cg = st.radio("Sexo:", ["Femenino", "Masculino"], horizontal=True, key="sexo_cg")
-        if st.button("Calcular y usar este CrCl", use_container_width=True):
-            crcl_calc = calcular_crcl_cockcroft_gault(edad_cg, peso_cg, creat_cg, sexo_cg)
+
+        def _aplicar_crcl_calculado():
+            crcl_calc = calcular_crcl_cockcroft_gault(
+                st.session_state.edad_cg,
+                st.session_state.peso_cg,
+                st.session_state.creat_cg,
+                st.session_state.sexo_cg,
+            )
             if crcl_calc:
                 st.session_state["crcl_directo"] = round(crcl_calc, 1)
-                st.rerun()
+
+        st.button("Calcular y usar este CrCl", use_container_width=True, on_click=_aplicar_crcl_calculado)
     crcl = st.session_state["crcl_directo"]
 
 # ---------------------------------------------------------------------------
