@@ -280,3 +280,19 @@ def calcular_crcl_cockcroft_gault(edad, peso_kg, creatinina_mg_dl, sexo):
         return None
     factor = 0.85 if sexo == "Femenino" else 1.0
     return ((140 - edad) * peso_kg * factor) / (72 * creatinina_mg_dl)
+
+
+def calcular_inr(pt_paciente_seg, pt_control_seg, isi):
+    """INR = (PT paciente / PT control [media normal del laboratorio]) ^ ISI.
+
+    PT: Tiempo de Protrombina, en segundos.
+    ISI: Índice de Sensibilidad Internacional del reactivo/tromboplastina
+    utilizada por el laboratorio (habitualmente 0.9 a 1.2 para reactivos
+    modernos; debe figurar en el reporte del laboratorio o el inserto del
+    reactivo).
+    """
+    if pt_paciente_seg is None or pt_control_seg is None or isi is None:
+        return None
+    if pt_paciente_seg <= 0 or pt_control_seg <= 0 or isi <= 0:
+        return None
+    return (pt_paciente_seg / pt_control_seg) ** isi

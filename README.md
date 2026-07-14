@@ -20,11 +20,19 @@ depende de ella).
   (Rivaroxabán, Apixabán, Edoxabán, Dabigatrán).
 - Cálculo de aclaramiento de creatinina (Cockcroft-Gault) para ajustar la
   recomendación de los NACOs según función renal.
+- Cálculo de INR a partir de datos de laboratorio (PT del paciente, PT
+  control del laboratorio e ISI del reactivo) para pacientes con Warfarina
+  o Acenocumarol.
 - Generación automática de fechas sugeridas de suspensión y reinicio en
   base a la fecha programada del procedimiento.
 - Alerta roja automática (Dabigatrán con CrCl < 30 mL/min → requiere
   interconsulta con Hematología).
 - Exportación del plan de manejo como texto y como PDF descargable.
+- Interfaz inmersiva tipo "glass" (fondo azul profundo, tarjetas
+  translúcidas con blur), sin barra lateral: los selectores de paciente,
+  procedimiento y fármacos viven en tarjetas flotantes superiores, y el
+  plan de manejo se visualiza como una línea de tiempo horizontal con el
+  Día 0 (procedimiento) como nodo central.
 
 ## Instalación
 
