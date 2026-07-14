@@ -275,6 +275,9 @@ st.markdown(
     <div class="hero-row">
         <span class="hero-badge">💊 Anticoag·RI</span>
         <div class="hero-sub">Manejo periprocedimiento de anticoagulantes · Radiología Intervencionista</div>
+        <div style="margin-top:.9rem;">
+            <a href="/Plantillas_RI" target="_self" class="hero-badge" style="font-size:.82rem; text-decoration:none;">📋 Plantillas de informes RI</a>
+        </div>
     </div>
     """,
     unsafe_allow_html=True,
