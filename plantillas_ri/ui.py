@@ -134,6 +134,9 @@ def render_hero():
                 Informes estructurados para Radiología Intervencionista general / corporal
                 &middot; SIR &middot; CIRSE &middot; RSNA &middot; ACR
             </div>
+            <div style="margin-top:.9rem;">
+                <a href="/" target="_self" class="hero-badge" style="font-size:.82rem; text-decoration:none;">💊 Volver a Anticoag·RI</a>
+            </div>
         </div>
         """,
         unsafe_allow_html=True,
