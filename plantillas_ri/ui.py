@@ -82,6 +82,23 @@ def inyectar_estilos():
         [data-testid="stButton"] button:hover {
             border-color: rgba(148,197,255,.8) !important; box-shadow: 0 8px 28px rgba(56,189,248,.32);
         }
+        [data-testid="stLinkButton"] a {
+            background: linear-gradient(135deg, rgba(56,189,248,.25), rgba(99,102,241,.25)) !important;
+            border: 1px solid rgba(148,197,255,.55) !important;
+            border-radius: 999px !important;
+            color: #eaf4ff !important;
+            font-weight: 600 !important;
+            padding: .55rem 1.35rem !important;
+            box-shadow: 0 6px 20px rgba(56,189,248,.22);
+            text-decoration: none !important;
+        }
+        [data-testid="stLinkButton"] a:hover {
+            border-color: rgba(148,197,255,.85) !important;
+            color: #ffffff !important;
+        }
+        a.hero-badge, a.hero-badge:visited {
+            color: #eaf4ff !important;
+        }
 
         .cat-tag {
             font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; font-weight: 700;
@@ -123,6 +140,13 @@ def _resaltar_placeholders(texto: str) -> str:
         return f'<span class="ph-tag">[{esc(match.group(1))}]</span>'
 
     return re.sub(r"\[([^\]]+)\]", _sub, esc(texto))
+
+
+def render_nav_volver():
+    """Botón nativo de Streamlit — más visible que el anchor HTML en producción."""
+    _, col, _ = st.columns([1, 1.4, 1])
+    with col:
+        st.link_button("💊 Volver a Anticoag·RI", "/", width="stretch")
 
 
 def render_hero():
@@ -226,6 +250,7 @@ def render_detalle(plantilla_id: str):
 
 def render_modulo():
     inyectar_estilos()
+    render_nav_volver()
     render_hero()
 
     seleccionada = st.session_state.get("plantilla_ri_seleccionada")
